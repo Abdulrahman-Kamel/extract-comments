@@ -32,7 +32,7 @@ class main():
 		primary_checks()
 		basics()
 		self.urls = readStdin()
-		self.Poolex(100, self.urls, self.extractComments)
+		self.Poolex(500, self.urls, self.extractComments)
 
 	def extractComments(self, url):
 		try:
