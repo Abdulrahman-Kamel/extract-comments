@@ -43,7 +43,8 @@ class main():
 			response_file.close()
 			match_html_comment = re.findall(r"<!--.*?-->", response.text)
 			match_js_comment = re.findall(r"(// .*|\/\*.*\/\*)", response.text)
-
+			
+			global all_comments
 			all_comments = match_html_comment + match_js_comment
 
 		except Exception as error:
