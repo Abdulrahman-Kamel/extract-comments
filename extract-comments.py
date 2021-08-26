@@ -36,6 +36,9 @@ class main():
 		self.Poolex(100, self.urls, self.extractComments)
 
 	def extractComments(self, url):
+		global all_comments
+		all_comments = ''
+		
 		try:
 			response = requests.get(url)
 			response_file = open('delme_response.txt','+a')
@@ -44,14 +47,12 @@ class main():
 			match_html_comment = re.findall(r"<!--.*?-->", response.text)
 			match_js_comment = re.findall(r"(// .*|\/\*.*\/\*)", response.text)
 			
-			global all_comments
 			all_comments = match_html_comment + match_js_comment
 
 		except Exception as error:
 			pass
 
-
-		if all_comments:
+		if len(all_comments):
 			print("Comments For: ",url)
 			for comment in all_comments:
 				print(comment)
